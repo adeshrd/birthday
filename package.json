@@ -5,7 +5,7 @@
   "main": " ",
   "scripts": {
     "start": "npm run server-node",
-    "server-node": "http-server -p 8081"
+    "server-node": "http-server -p 80"
   },
   "repository": {
     "type": "git",
