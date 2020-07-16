@@ -5,6 +5,7 @@
   "main": " ",
   "scripts": {
     "start": "npm run server-node",
+    "dev": "env PORT=8081 npm start",
     "server-node": "http-server -p $PORT"
   },
   "repository": {
