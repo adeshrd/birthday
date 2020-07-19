@@ -4,6 +4,18 @@
 
 ///////////////////////////////////////////
 
+body {
+  overflow: hidden !important;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 @font-face {
   font-family: 'IndieFlower';
   src: url('IndieFlower-Regular.ttf') format('truetype');
@@ -14,13 +26,28 @@
   src: url('Caveat-Bold.ttf') format('truetype');
 }
 
+.tanya-burning {
+  display: none;
+  position: relative;
+  left: 48px;
+  bottom: 62px;
+  transform: rotate(30deg);
+  width: 150px;
+}
+
+.move-h-up {
+  transform: translateY(-100px);
+  transition: all 2s;
+}
+
+
 .test {
   font-size: 30px;
   font-weight: bold;;
   font-family: 'IndieFlower', Helvetica, serif;
   color: #063f54;
   text-align: right;
-  text-shadow: 0px 1px 0px rgba(255,255,255,.5);
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
 
   .character-says {
     display: inline-block;
@@ -42,6 +69,7 @@
 
   .character-box-adesh {
     display: none;
+
     .character {
       float: left;
       margin-left: 30px;
@@ -49,8 +77,9 @@
     }
   }
 
-  .character-box-harshita {
+  .character-box-harshita, .character-box-tanya {
     display: none;
+
     .character {
       float: right;
       margin-right: 30px;
@@ -58,23 +87,42 @@
     }
   }
 
-
+  .character-box-tanya {
+    color: #fff;
+    .character {
+      display: none;
+      background-image: url("tanya.jpg");
+    }
+  }
 }
 
 .purple-button {
   background: #8e44ad;
-  border: 1px solid #8e44ad;
+  border: 1px solid #843fa1;
   color: #fff;
   box-shadow: 0px 2px 4px #000;
+
+  &:active, &:hover {
+    background: #843fa1;
+    color: #fff;
+    border: 1px solid #7a3a95;
+  }
 }
 
 .red-button {
   display: inline-block;
   background: #e74c3c;
-  border: 1px solid #e74c3c;
+  border: 1px solid #e3301e;
   color: #fff;
   box-shadow: 0px 2px 4px #000;
+
+  &:active, &:hover {
+    background: #e3301e;
+    color: #fff;
+    border: 1px solid #d62c1a;
+  }
 }
+
 /* ============================================== POSITION
 */
 

@@ -23,7 +23,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="loading.css">
-	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="animate.min.css">
 	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
 	<link rel="stylesheet/less" href="cake.less">
@@ -36,7 +35,12 @@
         <source src="hbd.mp3"></source>
 	   Your browser isn't invited for super fun audio time.
     </audio>
-    <div class="balloons text-center" id="b1">
+	<audio class="darkSong" controls loop>
+		<source src="Quiet-Tension.mp3"></source>
+		Your browser isn't invited for super fun audio time.
+	</audio>
+
+	<div class="balloons text-center" id="b1">
     	<h2 style="color:#F2B300;">H</h2>
     </div>
     <div class="balloons text-center" id="b2">
@@ -58,11 +62,76 @@
     	<h2 style="color:#20CFB4;">A</h2>
     </div>
 
-    <img src="Balloon-Border.png" width="100%" class="balloon-border">
+	<div class="balloons text-center" id="b11">
+		<h2 style="color:#F2B300;">H</h2>
+	</div>
+	<div class="balloons text-center" id="b22">
+		<h2 style="color:#0719D4;">B</h2>
+	</div>
+	<div class="balloons text-center" id="b33">
+		<h2 style="color:#D14D39;">D</h2>
+	</div>
+	<div class="balloons text-center" id="b44">
+		<h2 style="color:#8FAD00;">X</h2>
+	</div>
+	<div class="balloons text-center" id="b55">
+		<h2 style="color:#8377E4;">O</h2>
+	</div>
+	<div class="balloons text-center" id="b66">
+		<h2 style="color:#99C96A;">L</h2>
+	</div>
+	<div class="balloons text-center" id="b77">
+		<h2 style="color:#20CFB4;">A</h2>
+	</div>
+
+	<div class="balloons text-center" id="b111">
+		<h2 style="color:#F2B300;">H</h2>
+	</div>
+	<div class="balloons text-center" id="b222">
+		<h2 style="color:#0719D4;">B</h2>
+	</div>
+	<div class="balloons text-center" id="b333">
+		<h2 style="color:#D14D39;">D</h2>
+	</div>
+	<div class="balloons text-center" id="b444">
+		<h2 style="color:#8FAD00;">X</h2>
+	</div>
+	<div class="balloons text-center" id="b555">
+		<h2 style="color:#8377E4;">O</h2>
+	</div>
+	<div class="balloons text-center" id="b666">
+		<h2 style="color:#99C96A;">L</h2>
+	</div>
+	<div class="balloons text-center" id="b777">
+		<h2 style="color:#20CFB4;">A</h2>
+	</div>
+
+	<div class="balloons text-center" id="b1111">
+		<h2 style="color:#F2B300;">H</h2>
+	</div>
+	<div class="balloons text-center" id="b2222">
+		<h2 style="color:#0719D4;">B</h2>
+	</div>
+	<div class="balloons text-center" id="b3333">
+		<h2 style="color:#D14D39;">D</h2>
+	</div>
+	<div class="balloons text-center" id="b4444">
+		<h2 style="color:#8FAD00;">X</h2>
+	</div>
+	<div class="balloons text-center" id="b5555">
+		<h2 style="color:#8377E4;">O</h2>
+	</div>
+	<div class="balloons text-center" id="b6666">
+		<h2 style="color:#99C96A;">L</h2>
+	</div>
+	<div class="balloons text-center" id="b7777">
+		<h2 style="color:#20CFB4;">A</h2>
+	</div>
+
+	<img src="Balloon-Border.png" width="100%" class="balloon-border">
  
 
 	<div class="container">
-		
 		<div class="row">
 			<div class="col-md-2 col-xs-2 bulb-holder">
 				<div class="bulb" id="bulb_yellow"></div>
@@ -84,24 +153,62 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12 text-center">
+			<div class="col-md-12 text-center" id="banner">
 				<img src="banner.png" class="bannar">
 			</div>
 
-			<div class="test">
-				<div class="row character-box character-box-harshita">
+			<div class="test" id="test-1">
+				<div class="row character-box character-box-harshita" id="character-box-harshita-1">
 					<div class="col-md-12 character-content">
 						<div class="character animate__animated animate__bounce">
 						</div>
-						<div class="character-says" style="float: right; margin-right: 20px"><span class="harshita-says-text"></span> </div>
+						<div class="character-says" style="float: right; margin-right: 20px">
+							<span id="harshita-says-text-1" class="harshita-says-text"></span>
+						</div>
 					</div>
 				</div>
 				<div class="row" style="margin-bottom: 20px"></div>
-				<div class="row character-box character-box-adesh">
+				<div class="row character-box character-box-adesh" id="character-box-adesh-1">
 					<div class="col-md-12 character-content">
 						<div class="character animate__animated animate__bounceInLeft">
 						</div>
-						<div class="character-says" style="float: left; margin-left: 20px"><span class="adesh-says-text"></span> </div>
+						<div class="character-says" style="float: left; margin-left: 20px">
+							<span id="adesh-says-text-1" class="adesh-says-text"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="test" id="test-2">
+				<div class="row character-box character-box-adesh" id="character-box-adesh-2">
+					<div class="col-md-12 character-content">
+						<div class="character animate__animated animate__bounce">
+						</div>
+						<div class="character-says" style="float: left; margin-left: 20px">
+							<span id="adesh-says-text-2" class="adesh-says-text"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 20px"></div>
+				<div class="row character-box character-box-harshita" id="character-box-harshita-2">
+					<div class="col-md-12 character-content">
+						<div class="character animate__animated animate__bounceInRight">
+						</div>
+						<div class="character-says" style="float: right; margin-right: 20px">
+							<span id="harshita-says-text-2" class="harshita-says-text"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="test" id="test-3">
+				<div class="row character-box character-box-tanya" id="character-box-tanya-1"  style="margin-bottom: 120px">
+					<div class="col-md-12 character-content">
+						<div class="character animate__animated animate__wobble animate__fast animate__repeat-2">
+						</div>
+						<div class="character-says" style="float: right; margin-right: 20px">
+							<span id="tanya-says-text-1"></span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -111,8 +218,10 @@
 		</div> -->
 		<div class="row cake-cover">
 			<div class="col-md-12 texr-center">
-				<div class="cake">
-				  <div class="velas">
+
+				<div class="cake animate__animated animate__jackInTheBox">
+					<img id="tanyaBurning" class="tanya-burning animate__animated" src="tanya.gif"/>
+					<div class="velas">
 				    <div class="fuego"></div>
 				    <div class="fuego"></div>
 				    <div class="fuego"></div>
@@ -122,57 +231,6 @@
 				  <div class="cobertura"></div>
 				  <div class="bizcocho"></div>
 				</div>
-			</div>
-		</div>
-		<div class="row message">
-			<div class="col-md-12">
-				<p>Today is...</p>
-				<p>as beautiful as other days</p>
-				<p>but you realize</p>
-				<p>another year has gone</p>
-				<p>in a blink of the eyes</p>
-				<p><strong>however</strong></p>
-				<p>Do you know..?</p>
-				<p>today is just special</p>
-				<p>so special to you</p>
-				<p>that's why</p>
-				<p>Let's make it...</p>
-				<p>the best celebration ever</p>
-				<p>and let me share...</p>
-				<p>a piece of happiness to you</p>
-				<p>I made all this...</p>
-				<p>as a birthday present to you</p>
-				<p>thanks for being there</p>
-				<p>thanks for the friendship we made</p>
-				<p>thanks for everything</p>
-				<p>I wish you all the best</p>
-				<p>May your life be at ease</p>
-				<p>May all your wishes come true</p>
-				<p>Remember</p>
-				<p>your ambitions</p>
-				<p>you live as a free bird...</p>
-				<p>flying in the blue sky</p>
-				<p>Now things are different...</p>
-				<p>real story of your life</p>
-				<p>is just about to begin</p>
-				<p>indeed..</p>
-				<p>but...</p>
-				<p>don't worry</p>
-				<p>because...</p>
-				<p>God has your back</p>
-				<p>and</p>
-				<p>this year will be better</p>
-				<p>and I hope</p>
-				<p>you'll find...</p>
-				<p>happiness along the way</p>
-				<p>keep your spirit up</p>
-				<p>enjoy every single moment...</p>
-				<p>that you experience today</p>
-				<p>fill it with your most beautiful smile</p>
-				<p>and make it the best memory..</p>
-				<p>lastly...</p>
-				<p>I'd like to wish you one more time</p>
-				<p>a very happy birthday Xola Mathembisa</p>
 			</div>
 		</div>
 		<div class="navbar navbar-fixed-bottom">
@@ -185,10 +243,11 @@
 					<button class="btn btn-default purple-button" id="balloons_flying">Fly Balloons</button>
 					<button class="btn btn-default red-button" id="confetti_falling">Drop Confetti</button>
 
-					<button class="btn btn-default" id="cake_fadein">Most Delicious Cake Ever</button>
+					<button class="btn btn-default" id="cake_fadein">Let's move ahead</button>
 					<button class="btn btn-default" id="light_candle"> Light Candle</button>
-					<button class="btn btn-default" id="wish_message">Happy Birthday</button>
-					<button class="btn btn-default" id="story">A mesage for you</button>
+					<button class="btn btn-default purple-button" id="wish_message">A mesage for you</button>
+					<button class="btn btn-default red-button" id="burn_tanya"> Don't click me</button>
+					<button class="btn btn-success" id="run_away">Go with Tanya</button>
 					<!-- <button class="btn btn-primary" id="cake_cut">Lrt's Cut the Cake</button> -->
 				</div>
 			</div>

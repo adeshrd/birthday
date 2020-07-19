@@ -11,14 +11,20 @@ function preload() {
 preload(
     "adesh.jpg",
     "harshita.jpg",
+    "tanya.jpg",
+    "tanya.gif"
 );
+//$('#balloons_flying,#confetti_falling').fadeIn('slow');
+
+let typeSpeed = 100;
 
 function firstConversation() {
     const adeshOptions = {
         strings: ['^100Hmm^300.^300.^200.^400', 'You choose &#128521;'],
-        typeSpeed: 100,
+        typeSpeed: typeSpeed,
         showCursor: false,
         onComplete: function () {
+            console.log("Typed event is firing!");
             //$('#bannar_coming').fadeIn('slow');
             $('#balloons_flying,#confetti_falling').fadeIn('slow');
         }
@@ -26,18 +32,80 @@ function firstConversation() {
 
     const harshitaOptions = {
         strings: ['^150 <i>Hey !</i> ^300', 'What\'s next ?^200'],
-        typeSpeed: 100,
+        typeSpeed: typeSpeed,
         showCursor: false,
         onComplete: function () {
-            $('.character-box-adesh').show().on('animationend', function () {
-                new Typed('.adesh-says-text', adeshOptions);
+            $('#character-box-adesh-1').show().on('animationend', function () {
+                new Typed('#adesh-says-text-1', adeshOptions);
             });
         }
     };
 
-    $('.character-box-harshita').show().on('animationend', function () {
-        new Typed('.harshita-says-text', harshitaOptions);
+    $('#character-box-harshita-1').show().on('animationend', function () {
+        new Typed('#harshita-says-text-1', harshitaOptions);
     });
+}
+
+animationCount = 0;
+
+function completeAnimation() {
+    if (animationCount > 0) {
+        $('.cake').fadeIn('slow', function () {
+            $('#light_candle').fadeIn('slow');
+        });
+    } else animationCount++;
+}
+
+function secondConversation() {
+
+    const harshitaOptions = {
+        strings: ['^100 Awww^50.^50.^50.', 'Thank you &#128522;'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            $('#character-box-adesh-2').fadeTo('slow', 0);
+            $('#character-box-harshita-2').addClass('move-h-up').on('transitionend', completeAnimation);
+            $('#banner').animate({height: 0}, {
+                duration: 1000,
+                complete: completeAnimation
+            });
+        }
+    };
+
+    const adeshOptions = {
+        strings: ['^200 Listen...', '^200 I got a cake!^300'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            $('#character-box-harshita-2').show().on('animationend', function () {
+                new Typed('#harshita-says-text-2', harshitaOptions);
+            });
+        }
+    };
+
+    $('#character-box-adesh-2').show().on('animationend', function () {
+        new Typed('#adesh-says-text-2', adeshOptions);
+    });
+}
+
+function thirdConversation() {
+
+    const tanyaOptions = {
+        strings: ['^200 Eeeeeeeeeeek!!!^300', '^200 Let\'s run Harshu!^300'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            $('#run_away').fadeIn('slow');
+        }
+    };
+
+    $('#character-box-tanya-1 .character').show().on('animationend', function () {
+        new Typed('#tanya-says-text-1', tanyaOptions);
+    });
+}
+
+function finalArc() {
+
 }
 
 
@@ -47,19 +115,8 @@ $(window).load(function () {
 });
 
 $('document').ready(function () {
-    var vw;
-    $(window).resize(function () {
-        vw = $(window).width() / 2;
-        $('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-        $('#b11').animate({top: 240, left: vw - 350}, 500);
-        $('#b22').animate({top: 240, left: vw - 250}, 500);
-        $('#b33').animate({top: 240, left: vw - 150}, 500);
-        $('#b44').animate({top: 240, left: vw - 50}, 500);
-        $('#b55').animate({top: 240, left: vw + 50}, 500);
-        $('#b66').animate({top: 240, left: vw + 150}, 500);
-        $('#b77').animate({top: 240, left: vw + 250}, 500);
-    });
-
+    var audio = $('.song')[0];
+    var darkAudio = $('.darkSong')[0];
     let peachAnimationEnded = false;
 
     function checkIfPeachAnimationEnded() {
@@ -85,7 +142,6 @@ $('document').ready(function () {
         });
     });
     $('#play').click(function () {
-        var audio = $('.song')[0];
         audio.play();
         $('#bulb_yellow').addClass('bulb-glow-yellow-after');
         $('#bulb_red').addClass('bulb-glow-red-after');
@@ -96,8 +152,8 @@ $('document').ready(function () {
         //$('body').css('backgroud-color', '#FFF');
         checkIfPeachAnimationEnded();
 
-        $(this).delay(1600).promise().done(firstConversation);
         $(this).fadeOut('slow');
+        $(this).delay(1600).promise().done(firstConversation);
     });
 
     $('#bannar_coming').click(function () {
@@ -107,153 +163,141 @@ $('document').ready(function () {
         });
     });
 
-    function loopOne() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b1').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopOne();
-        });
-    }
+    function animate() {
+        const balloonSpace = 100;
+        const numBalloonsPerRow = Math.ceil(window.innerWidth / balloonSpace) + 1;
+        let balloonsAnimated = 0;
+        let rows = 1;
+        let balloons = 0;
+        $('.balloons').each(function () {
+            const $balloon = $(this);
+            if (balloonsAnimated === numBalloonsPerRow) {
+                balloonsAnimated = 0;
+                rows++;
+            }
 
-    function loopTwo() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b2').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopTwo();
-        });
-    }
+            if (++balloons % 2 === 0) {
+                $balloon.addClass('balloons-rotate-behaviour-one');
+            } else {
+                $balloon.addClass('balloons-rotate-behaviour-two');
+            }
 
-    function loopThree() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b3').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopThree();
-        });
-    }
-
-    function loopFour() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b4').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopFour();
-        });
-    }
-
-    function loopFive() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b5').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopFive();
-        });
-    }
-
-    function loopSix() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b6').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopSix();
-        });
-    }
-
-    function loopSeven() {
-        var randleft = 1000 * Math.random();
-        var randtop = 500 * Math.random();
-        $('#b7').animate({left: randleft, bottom: randtop}, 10000, function () {
-            loopSeven();
+            $balloon.css('bottom', -250 * rows);
+            $balloon.css('left', balloonsAnimated === 0 ? 50 * Math.random() : balloonSpace * balloonsAnimated + (150 * Math.random()));
+            $balloon.animate({
+                top: -400
+            }, 14000);
+            balloonsAnimated++;
         });
     }
 
     $('#balloons_flying').click(function () {
-        return false;
-        $('.balloon-border').animate({top: -500}, 8000);
-        $('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
-        $('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
-        // $('#b3').addClass('balloons-rotate-behaviour-two');
-        // $('#b4').addClass('balloons-rotate-behaviour-one');
-        // $('#b5').addClass('balloons-rotate-behaviour-one');
-        // $('#b6').addClass('balloons-rotate-behaviour-two');
-        // $('#b7').addClass('balloons-rotate-behaviour-one');
-        loopOne();
-        loopTwo();
-        loopThree();
-        loopFour();
-        loopFive();
-        loopSix();
-        loopSeven();
+        $('.balloon-border').animate({top: -500}, 10000);
+        animate();
 
-        $(this).fadeOut('slow').delay(5000).promise().done(function () {
-            $('#cake_fadein').fadeIn('slow');
+        $('#balloons_flying,#confetti_falling').fadeOut('slow').delay(2000).promise().done(function () {
+            $('.character-box').fadeOut('slow', function () {
+                setTimeout(() => {
+                    $('#cake_fadein').fadeIn('slow');
+                    $('#test-1').hide();
+                }, 1500);
+            });
         });
     });
 
-    $('#cake_fadein').click(function () {
-        $('.cake').fadeIn('slow');
-        $(this).fadeOut('slow').delay(3000).promise().done(function () {
-            $('#light_candle').fadeIn('slow');
+    $('#confetti_falling').click(function () {
+        confetti.speed = 1;
+        confetti.frameInterval = 40;
+        confetti.start();
+
+        $('#balloons_flying,#confetti_falling').fadeOut('slow').delay(2000).promise().done(function () {
+            $('.character-box').fadeOut('slow', function () {
+                setTimeout(() => {
+                    $('#cake_fadein').fadeIn('slow');
+                    $('#test-1').hide();
+                }, 1500);
+            });
         });
+    });
+
+
+    $('#cake_fadein').click(function () {
+        $('.balloons').fadeOut({queue: false, duration: 'slow'}, function () {
+            $('.balloons').remove();
+        });
+        confetti.stop();
+        $(this).fadeOut('slow');
+        $(this).delay(1600).promise().done(secondConversation);
     });
 
     $('#light_candle').click(function () {
         $('.fuego').fadeIn('slow');
-        $(this).fadeOut('slow').promise().done(function () {
+        $(this).fadeOut('slow').delay(2000).promise().done(function () {
+
             $('#wish_message').fadeIn('slow');
+
+            let isShown = sessionStorage.getItem("burn-tanya");
+            isShown = isShown == null ? 0 : parseInt(isShown);
+            if (isShown !== 0 && ((isShown % Math.round(5 * Math.random())) === 0 || isShown === 1)) {
+                $('#burn_tanya').fadeIn('slow');
+            }
+            sessionStorage.setItem('burn-tanya', isShown + 1);
+        });
+    });
+
+    $('#burn_tanya').click(function () {
+        $('#wish_message').fadeOut('slow');
+        $(this).fadeOut('slow');
+        audio.pause();
+        darkAudio.play();
+        $('#character-box-harshita-2').fadeOut('slow');
+        $('body').removeClass('peach').removeClass('peach-after').addClass('darkness').addClass('darkness-after');
+        $('#test-1, #test-2').hide();
+        $('#character-box-tanya-1').show();
+        $('.cake').show();
+        $(this).delay(1500).promise().done(() => {
+            $('#tanyaBurning').fadeIn('slow', function () {
+                setTimeout(thirdConversation, 1000);
+            });
+        });
+
+    });
+
+    $('#run_away').click(function () {
+        $(this).fadeOut('slow');
+        darkAudio.pause();
+        audio.play();
+
+        $('#tanyaBurning').addClass('animate__backOutDown').hide().on('animationend');
+        $('body').removeClass('darkness').removeClass('darkness-after').addClass('peach-after');
+        $('.cake').removeClass('animate__jackInTheBox').addClass('animate__fadeOutBottomLeft').fadeOut("slow", function () {
+            $('#character-box-tanya-1').fadeOut('slow', function () {
+                $('#test-3').hide();
+                finalArc();
+            });
         });
     });
 
 
     $('#wish_message').click(function () {
+        $('#burn_tanya').fadeOut('slow');
         vw = $(window).width() / 2;
 
-        $('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-        $('#b1').attr('id', 'b11');
-        $('#b2').attr('id', 'b22')
-        $('#b3').attr('id', 'b33')
-        $('#b4').attr('id', 'b44')
-        $('#b5').attr('id', 'b55')
-        $('#b6').attr('id', 'b66')
-        $('#b7').attr('id', 'b77')
-        $('#b11').animate({top: 240, left: vw - 350}, 500);
-        $('#b22').animate({top: 240, left: vw - 250}, 500);
-        $('#b33').animate({top: 240, left: vw - 150}, 500);
-        $('#b44').animate({top: 240, left: vw - 50}, 500);
-        $('#b55').animate({top: 240, left: vw + 50}, 500);
-        $('#b66').animate({top: 240, left: vw + 150}, 500);
-        $('#b77').animate({top: 240, left: vw + 250}, 500);
-        $('.balloons').css('opacity', '0.9');
-        $('.balloons h2').fadeIn(3000);
-        $(this).fadeOut('slow').delay(3000).promise().done(function () {
-            $('#story').fadeIn('slow');
-        });
-    });
-
-    $('#story').click(function () {
-        $(this).fadeOut('slow');
-        $('.cake').fadeOut('fast').promise().done(function () {
-            $('.message').fadeIn('slow');
-        });
-
-        var i;
-
-        function msgLoop(i) {
-            $("p:nth-child(" + i + ")").fadeOut('slow').delay(800).promise().done(function () {
-                i = i + 1;
-                $("p:nth-child(" + i + ")").fadeIn('slow').delay(1000);
-                if (i == 50) {
-                    $("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-                        $('.cake').fadeIn('fast');
-                    });
-
-                } else {
-                    msgLoop(i);
-                }
-
+        $('#b1,#b2,#b3,#b4,#b5,#b6,#b7').hide().stop();
+        $(this).fadeOut('slow').delay(1000).promise().done(function () {
+            $('.cake').removeClass('animate__jackInTheBox').addClass('animate__fadeOutBottomLeft').fadeOut("slow", function () {
+                $(this).remove();
+                setTimeout(function () {
+                    $('#character-box-harshita-2').addClass('animate__animated animate__lightSpeedOutRight')
+                        .fadeOut('slow', function () {
+                            finalArc();
+                            $('#test-1,#test-2').remove();
+                        });
+                }, 200);
             });
-            // body...
-        }
-
-        msgLoop(0);
-
+        });
     });
+
 });
 
 
