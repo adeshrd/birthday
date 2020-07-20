@@ -106,10 +106,30 @@ function thirdConversation() {
 
 function finalArc() {
 
+    const options = {
+        strings: ['^200 I trust a little more', '^200 I laugh much more', '^200 I got a special friend'],
+        typeSpeed: typeSpeed,
+        smartBackspace: true,
+        showCursor: true
+    };
+
+    new Typed('.quote-say', options);
 }
 
 
 $(window).load(function () {
+
+    if (window.innerHeight < 600) {
+        let gutter = 70;
+        let splitHeight = Math.floor((window.innerHeight - gutter) / 2);
+        $('.custom-message,.message-col,.photo-col').css('height', splitHeight + "px");
+    }
+
+    if (window.innerHeight > 700) {
+        let gutter = window.innerHeight - 700;
+        $('#main-content').css('margin-top', (gutter > 200 ? 200 : gutter) + "px");
+    }
+
     $('.loading').fadeOut('fast');
     $('.container').fadeIn('fast');
 });
@@ -280,6 +300,8 @@ $('document').ready(function () {
 
 
     $('#wish_message').click(function () {
+        finalArc();
+        return false;
         $('#burn_tanya').fadeOut('slow');
         vw = $(window).width() / 2;
 
