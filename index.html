@@ -12,9 +12,8 @@
 <head>
     <title>Happy Birthday</title>
     <meta charset="UTF-8"/>
-    <meta name="description" content="Happy Birthday Xola">
+    <meta name="description" content="Happy Birthday Harshu">
     <meta name="robots" content="index, follow"/>
-    <link rel="author" href="https://plus.google.com/u/1/+AyushSharma1/"/>
     <meta name="keywords" content="Birthday, Happy">
     <!-- Strat of Facebook Meta -->
     <meta property="og:type" content="E-Greeting"/>
@@ -138,7 +137,7 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="row" id="bulbs">
         <div class="col-md-2 col-xs-2 bulb-holder">
             <div class="bulb" id="bulb_yellow"></div>
         </div>
@@ -164,16 +163,68 @@
         </div>
 
         <div class="custom-message row">
-            <div class="col-md-6 message-col">
-                <span class=" say-code because">
-                    Because of you
-                </span>
-                <span class="quote-say"></span>
+            <div class="col-md-6 message-col" style="display: none" id="message-col-1">
+                <div>
+                    <span class="say-code because" id="because-1"></span>
+                    <span class="quote-say" id="quote-1"></span>
+                    <span class="quote-say" id="quote-2"></span>
+                    <span class="quote-say" id="quote-3"></span>
+                </div>
             </div>
-            <div class="col-md-6 photo-col">
+            <div class="col-md-6 photo-col animate__animated animate__fadeInLeft animate__slow" id="photo-col-1"
+                 style="display: none">
                 <div class="custom-photo photo-harshita"></div>
             </div>
-		</div>
+
+            <div class="col-md-6 message-col" style="display: none" id="message-col-2">
+                <div>
+                    <span class="say-code because" id="because-2"></span>
+                    <span class="quote-say" id="quote-4"></span>
+                    <span class="quote-say" id="quote-5"></span>
+                    <span class="quote-say" id="quote-6"></span>
+                </div>
+            </div>
+            <div class="col-md-6 photo-col animate__animated animate__fadeInLeft" id="photo-col-2"
+                 style="display: none">
+                <div class="custom-photo photo-final-2"></div>
+            </div>
+
+            <div class="col-md-6 message-col" style="display: none" id="message-col-3">
+                <div>
+                    <span class="say-code because" id="because-3"></span>
+                    <span class="quote-say" id="quote-7"></span>
+                    <span class="quote-say" id="quote-8"></span>
+                    <span class="quote-say" id="quote-9"></span>
+                    <span class="heart quote-say" id="heart" style="opacity: 0"></span>
+                </div>
+            </div>
+            <div class="col-md-6 photo-col animate__animated animate__fadeInLeft" id="photo-col-3"
+                 style="display: none">
+                <div class="custom-photo photo-final-3"></div>
+            </div>
+
+            <div class="col-md-12 message-col" style="display: none" id="message-col-4">
+                <div>
+                    <span class="say-code because" id="because-4"></span>
+                    <span class="quote-say" id="quote-10"></span>
+                </div>
+            </div>
+
+            <div class="col-md-12 message-birthday-col" style="display: none" id="message-col-5">
+                <div>
+                    <div class="birthday-message animate__animated animate__bounceIn animate__slow"
+                         id="birthday-message">Happy Birthday
+                    </div>
+                    <div class="name-letter" id="name-letter-1">H<span class="name-letter-expanded"></span></div>
+                    <div class="name-letter" id="name-letter-2">A<span class="name-letter-expanded"></span></div>
+                    <div class="name-letter" id="name-letter-3">R<span class="name-letter-expanded"></span></div>
+                    <div class="name-letter" id="name-letter-4">S<span class="name-letter-expanded"></span></div>
+                    <div class="name-letter" id="name-letter-5">H<span class="name-letter-expanded"></span></div>
+                    <div class="name-letter" id="name-letter-6">U<span class="name-letter-expanded"></span></div>
+                </div>
+            </div>
+
+        </div>
 
         <div class="test" id="test-1">
             <div class="row character-box character-box-harshita" id="character-box-harshita-1">
@@ -281,6 +332,10 @@
         </div> -->
     </div>
 
+    <div class="made-with-love animate__animated animate__fadeInLeft">Made with <svg class="made-by-heart" viewBox="0 0 32 29.6">
+  <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+	c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+</svg> by <b>Johann Liebert</b></div>
 
 </div>
 </body>

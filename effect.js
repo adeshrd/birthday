@@ -12,7 +12,10 @@ preload(
     "adesh.jpg",
     "harshita.jpg",
     "tanya.jpg",
-    "tanya.gif"
+    "tanya.gif",
+    "final-1.jpg",
+    "final-2.jpg",
+    "final-3.jpeg"
 );
 //$('#balloons_flying,#confetti_falling').fadeIn('slow');
 
@@ -104,21 +107,7 @@ function thirdConversation() {
     });
 }
 
-function finalArc() {
-
-    const options = {
-        strings: ['^200 I trust a little more', '^200 I laugh much more', '^200 I got a special friend'],
-        typeSpeed: typeSpeed,
-        smartBackspace: true,
-        showCursor: true
-    };
-
-    new Typed('.quote-say', options);
-}
-
-
-$(window).load(function () {
-
+function applyFixes() {
     if (window.innerHeight < 600) {
         let gutter = 70;
         let splitHeight = Math.floor((window.innerHeight - gutter) / 2);
@@ -126,9 +115,288 @@ $(window).load(function () {
     }
 
     if (window.innerHeight > 700) {
-        let gutter = window.innerHeight - 700;
+        let gutter = (window.innerHeight - 700);
         $('#main-content').css('margin-top', (gutter > 200 ? 200 : gutter) + "px");
     }
+    $('body').removeClass('peach-after');
+}
+
+function finalArc() {
+    const options3 = {
+        strings: ['^200 I made a <u>SPECIAL</u> friend'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: finalArc2
+    };
+
+    const options2 = {
+        strings: ['^200 I <u>LAUGH</u> a lot more'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-3', options3);
+        }
+    };
+
+    const options1 = {
+        strings: ['^200 I <u>TRUST</u> a little more'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-2', options2);
+        }
+    };
+
+    const options0 = {
+        strings: ['^200 Because of you'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-1', options1);
+        }
+    };
+
+    applyFixes();
+    $('.custom-message').show();
+    $('#message-col-1').show();
+    $('#photo-col-1').show().on('animationend', function () {
+        new Typed('#because-1', options0);
+    });
+}
+
+
+function finalArc2() {
+
+    const options3 = {
+        strings: ['^200 You are <u>PRECIOUS</u> to us'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: finalArc3
+    };
+
+    const options2 = {
+        strings: ['^200 Above all, always <u>remember</u>'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-6', options3);
+        }
+    };
+
+    const options1 = {
+        strings: ['You are <u>FUNNY</u>', 'You are <u>SMART</u>', 'You are <u>CUTE</u>', 'You are <u>BEAUTIFUL</u>'],
+        typeSpeed: typeSpeed,
+        backSpeed: 150,
+        startDelay: 200,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-5', options2);
+        }
+    };
+
+    const options0 = {
+        strings: ['^200 Beautiful you'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-4', options1);
+        }
+    };
+
+    setTimeout(function () {
+        $('#photo-col-1').removeClass('animate__fadeInLeft').addClass('animate__fadeOutRight').fadeOut('slow');
+        $('#message-col-1').fadeOut('slow', function () {
+            $('#message-col-2').show();
+            $('#photo-col-2').show().on('animationend', function () {
+                new Typed('#because-2', options0);
+            });
+        });
+    }, 500);
+}
+
+
+function finalArc3() {
+
+    const options3 = {
+        strings: ['^200 is already <u>YOURS!</u>'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            $('#heart').fadeTo('slow', 1, function () {
+                finalArc4();
+            });
+        }
+    };
+
+    const options2 = {
+        strings: ['^200 because the very <u>BEST</u>'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-9', options3);
+        }
+    };
+
+    const options1 = {
+        strings: ['^200 Besties are hard to find'],
+        typeSpeed: typeSpeed,
+        backSpeed: 150,
+        startDelay: 200,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-8', options2);
+        }
+    };
+
+    const options0 = {
+        strings: ['^200 Besties forever'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-7', options1);
+        }
+    };
+
+    setTimeout(function () {
+        $('#photo-col-2').removeClass('animate__fadeInLeft').addClass('animate__fadeOutRight').fadeOut('slow');
+        $('#message-col-2').fadeOut('slow', function () {
+            $('#message-col-3').show();
+            $('#photo-col-3').show().on('animationend', function () {
+                new Typed('#because-3', options0);
+            });
+        });
+    }, 500);
+}
+
+function finalArc4() {
+    const options1 = {
+        strings: ['^200 And finally', 'I want to wish you!'],
+        typeSpeed: typeSpeed,
+        backSpeed: 150,
+        startDelay: 200,
+        showCursor: false,
+        onComplete: finalArc5
+    };
+
+    const options0 = {
+        strings: ['^200 Birthday wishes'],
+        typeSpeed: typeSpeed,
+        showCursor: false,
+        onComplete: function () {
+            new Typed('#quote-10', options1);
+        }
+    };
+
+    setTimeout(function () {
+        $('#photo-col-3').removeClass('animate__fadeInLeft').addClass('animate__fadeOutRight').fadeOut('slow');
+        $('#message-col-3').fadeOut('slow', function () {
+            $('#message-col-4').show();
+            new Typed('#because-4', options0);
+        });
+    }, 1000);
+}
+
+function fadeInSeries(n, end) {
+    if (n > 6) end();
+    else
+        $('#name-letter-' + n).fadeIn('slow', function () {
+            fadeInSeries(n + 1, end);
+        })
+}
+
+calledOnce = false;
+
+function finalArc5() {
+
+    function expand() {
+
+        const options6 = {
+            strings: ['nyielding spirit'],
+            startDelay: 200,
+            cursor: false,
+            typeSpeed: typeSpeed,
+            onComplete: function () {
+                setTimeout(() => {
+                    $('.made-with-love').show();
+                }, 800);
+            }
+        };
+
+        const options5 = {
+            strings: ['eavenly smile'],
+            startDelay: 200,
+            cursor: false,
+            typeSpeed: typeSpeed,
+            onComplete: function () {
+                new Typed('#name-letter-6 .name-letter-expanded', options6);
+            }
+        };
+
+        const options4 = {
+            strings: ['exy', 'tunning eyes'],
+            startDelay: 200,
+            cursor: false,
+            typeSpeed: typeSpeed,
+            onComplete: function () {
+                new Typed('#name-letter-5 .name-letter-expanded', options5);
+            }
+        };
+
+        const options3 = {
+            strings: ['adiant personality'],
+            startDelay: 200,
+            cursor: false,
+            typeSpeed: typeSpeed,
+            onComplete: function () {
+                new Typed('#name-letter-4 .name-letter-expanded', options4);
+            }
+        };
+
+        const options2 = {
+            strings: ['ngelic face'],
+            startDelay: 200,
+            cursor: false,
+            typeSpeed: typeSpeed,
+            onComplete: function () {
+                new Typed('#name-letter-3 .name-letter-expanded', options3);
+            }
+        };
+
+        new Typed('#name-letter-1 .name-letter-expanded', {
+            strings: ['eartwarming presence'],
+            startDelay: 800,
+            cursor: false,
+            typeSpeed: typeSpeed,
+            onComplete: function () {
+                new Typed('#name-letter-2 .name-letter-expanded', options2);
+            }
+        })
+    }
+
+    function rest() {
+        fadeInSeries(1, function () {
+            $('.name-letter').css('transform', 'translateX(-35%)').on('transitionend', function () {
+                if (!calledOnce) {
+                    calledOnce = true;
+                    expand();
+                }
+            });
+        })
+    }
+
+    $('#message-col-4').fadeOut('slow');
+    $('#message-col-5').show();
+    $('#bulbs').fadeOut('slow');
+    $('body')
+        .css('transition', 'background-color linear 3s')
+        .css('background-color', '#2d1b55')
+        .on('transitionend', function () {
+            $('#birthday-message').show().on('animationend', rest);
+        });
+}
+
+$(window).load(function () {
+    applyFixes();
 
     $('.loading').fadeOut('fast');
     $('.container').fadeIn('fast');
@@ -289,7 +557,7 @@ $('document').ready(function () {
         audio.play();
 
         $('#tanyaBurning').addClass('animate__backOutDown').hide().on('animationend');
-        $('body').removeClass('darkness').removeClass('darkness-after').addClass('peach-after');
+        $('body').removeClass('darkness').removeClass('darkness-after').addClass('peach').addClass('peach-after');
         $('.cake').removeClass('animate__jackInTheBox').addClass('animate__fadeOutBottomLeft').fadeOut("slow", function () {
             $('#character-box-tanya-1').fadeOut('slow', function () {
                 $('#test-3').hide();
@@ -300,8 +568,6 @@ $('document').ready(function () {
 
 
     $('#wish_message').click(function () {
-        finalArc();
-        return false;
         $('#burn_tanya').fadeOut('slow');
         vw = $(window).width() / 2;
 
