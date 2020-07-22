@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run server-node",
     "dev": "env PORT=8081 npm start",
-    "server-node": "http-server -p $PORT"
+    "server-node": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/ayusharma/birthday#readme",
   "dependencies": {
-    "http-server": "^0.11.1"
+    "express": "^4.17.1",
+    "heroku-ssl-redirect": "0.0.4",
+    "path": "^0.12.7"
   }
 }
